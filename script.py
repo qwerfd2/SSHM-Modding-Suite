@@ -62,7 +62,7 @@ print("All file metadata acquired.")
 bytes = bytes[deletes:]
 
 #step 3: correct offset and extract
-print("Extracting files to 'output' directory.")
+print("Extracting file(s) to 'output' directory.")
 index = 0
 temp_index = 0
 temp_storage = []
@@ -83,4 +83,4 @@ for byte in bytes:
             break
         next_start = next_start + file_list[temp_index]["end"]
 
-print("All file exported to 'output' directory.")
+print("All file(s) exported to 'output' directory.")
