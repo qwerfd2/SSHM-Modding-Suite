@@ -2,7 +2,7 @@
 
 This script can extract .pak files for The Secret Society - Hidden Mystery.
 
-Usage: ```python script.py pack.pak```
+Usage: ```python script.py pack.pak output_dir```
 
 File will be saved to "output" folder.
 
