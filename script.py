@@ -2,11 +2,14 @@ import sys
 import json
 import os
 
+print("Opening the file.")
 with open(sys.argv[1], 'rb') as f:
     contents = f.read()
 bytes = list(contents)
+print("File opened.")
 
 #Step 1: get the file count (every byte till 1st 0A)
+print("Detecting number of files.")
 file_num = 0
 temp_storage = ""
 temp_index = 0
@@ -24,7 +27,7 @@ temp_storage = ""
 temp_index = 0
 
 #Step 2: parse file name, start, length until file runs out
-
+print("Acquiring file metadata.")
 file_list = []
 file_object = {}
 index = 0
@@ -42,8 +45,7 @@ for byte in bytes:
             temp_storage = ""
             temp_index += 1
         else:
-            raise Exception('overflow temp_index, aborting.')
-            
+            raise Exception('overflow temp_index, aborting.')       
     elif byte == 10:
         #/n
         file_object["end"] = int(temp_storage)
@@ -57,10 +59,11 @@ for byte in bytes:
     else:
         temp_storage += chr(byte)
 
+print("All file metadata acquired.")
 bytes = bytes[deletes:]
 
 #step 3: correct offset and extract
-
+print("Extracting files to 'output' directory.")
 index = 0
 temp_index = 0
 temp_storage = []
@@ -82,4 +85,4 @@ for byte in bytes:
             break
         next_start = next_start + file_list[temp_index]["end"]
 
-print("All file(s) exported.")
+print("All file exported to 'output' directory.")
