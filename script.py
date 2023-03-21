@@ -37,7 +37,7 @@ except ValueError as e:
     print(file_name, "is deformed - is it a Secret Society Hidden Mystery .pak file?\n", traceback.format_exc())
     quit()
 except:
-    print("An unknown error occurred. Please go to https://github.com/qwerfd2/SSHM-Pak-Extractor and let the developer know.\n", traceback.format_exc())
+    print("An unknown error occurred. Please go to https://github.com/qwerfd2/SSHM-Pak-Extractor and open an issue.\n", traceback.format_exc())
     quit()
 
 print("All file metadata acquired.\nExtracting file(s) to '", save_path, "' directory.")
@@ -52,7 +52,7 @@ try:
             with open(file_path, 'wb') as out:
                 out.write(content)
 except:
-    print("Something went wrong while extracting the files. Please go to https://github.com/qwerfd2/SSHM-Pak-Extractor and let the developer know.\n", traceback.format_exc())
+    print("Something went wrong while extracting the files. Please go to https://github.com/qwerfd2/SSHM-Pak-Extractor and open an issue.\n", traceback.format_exc())
     quit()
 
 print("All file(s) exported to '", save_path, "' directory.")
