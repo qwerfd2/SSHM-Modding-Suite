@@ -1,6 +1,6 @@
 # SSHM-Pak-Extractor
 
-This script can extract .pak files for Secret Society - Hidden Mystery.
+This script can extract .pak files for The Secret Society - Hidden Mystery.
 
 Usage: ```python script.py pack.pak```
 
