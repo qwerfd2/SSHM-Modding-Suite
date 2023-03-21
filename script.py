@@ -17,26 +17,26 @@ with open(file_name, 'rb') as f:
     offset = 0
     print("File opened.\nDetecting number of files.")
     line = f.readline()
-    file_num = int(line.decode().strip())
+    num_files = int(line.decode().strip())
     offset += len(line)
-    print(str(file_num),"file(s) detected.\nAcquiring file metadata.")
+    print(str(num_files),"file(s) detected.\nAcquiring file metadata.")
     file_list = []
-    for i in range(file_num):
+    for i in range(num_files):
         line = f.readline()
         offset += len(line)
         file_info = line.decode().strip().split('|')
         path, start, length = file_info
-        file_object = {'name': path, 'start': int(start), 'end': int(length)}
+        file_object = {'name': path, 'start': int(start), 'length': int(length)}
         file_list.append(file_object)
 
 print("All file metadata acquired.\nExtracting file(s) to '", save_path, "' directory.")
 
-for file in file_list:
-    file_path = os.path.join(save_path, file["name"])
-    os.makedirs(os.path.dirname(file_path), exist_ok=True)
-    with open(file_name, 'rb') as f:
+with open(file_name, 'rb') as f:
+    for file in file_list:
+        file_path = os.path.join(save_path, file["name"])
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
         f.seek(file['start'] + offset)
-        content = f.read(file['end'])
+        content = f.read(file['length'])
         with open(file_path, 'wb') as out:
             out.write(content)
 
