@@ -1,46 +1,45 @@
 import sys
-import json
 import os
 
+if len(sys.argv) < 3:
+    print("Command line invalid.\nUsage: python", sys.argv[0], "pack.pak output_dir")
+    quit()
+
+file_name = sys.argv[1]
+save_path = sys.argv[2]
+if file_name[-4:] != '.pak':
+    print("Input file name invalid.\nUsage: python", sys.argv[0], "pack.pak output_dir")
+    quit()
+
 print("Opening the file.")
-with open(sys.argv[1], 'rb') as f:
+
+with open(file_name, 'rb') as f:
+    offset = 0
     print("File opened.")
     print("Detecting number of files.")
-    file_num = int(f.readline().decode().strip())
+    line = f.readline()
+    file_num = int(line.decode().strip())
+    offset += len(line)
     print(str(file_num),"file(s) detected.")
     file_list = []
     for i in range(file_num):
-        file_info = f.readline().decode().strip().split('|')
+        line = f.readline()
+        offset += len(line)
+        file_info = line.decode().strip().split('|')
         path, start, length = file_info
         file_object = {'name': path, 'start': int(start), 'end': int(length)}
         file_list.append(file_object)
     print("All file metadata acquired.")
-    contents = f.read()
-bytes = list(contents)
 
-temp_storage = ""
-temp_index = 0
+print("Extracting file(s) to '", save_path, "' directory.")
 
-#step 3: correct offset and extract
-print("Extracting file(s) to 'output' directory.")
-index = 0
-temp_index = 0
-temp_storage = []
-next_start = file_list[0]["end"]
-for byte in bytes:
-    index += 1
-    temp_storage.append(byte)
-    if index >= next_start:
-        temp_storage.append(byte)
-        filename = "output/"+file_list[temp_index]["name"]
-        os.makedirs(os.path.dirname(filename), exist_ok=True)
-        newFile = open(filename, "wb")
-        fileByteArray = bytearray(temp_storage)
-        newFile.write(fileByteArray)
-        temp_index += 1
-        temp_storage = []
-        if temp_index >= file_num:
-            break
-        next_start = next_start + file_list[temp_index]["end"]
+for file in file_list:
+    file_path = os.path.join(save_path, file["name"])
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    with open(file_name, 'rb') as f:
+        f.seek(file['start'] + offset)
+        content = f.read(file['end'])
+        with open(file_path, 'wb') as out:
+            out.write(content)
 
-print("All file(s) exported to 'output' directory.")
+print("All file(s) exported to '", save_path, "' directory.")
