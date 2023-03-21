@@ -15,12 +15,11 @@ print("Opening the file.")
 
 with open(file_name, 'rb') as f:
     offset = 0
-    print("File opened.")
-    print("Detecting number of files.")
+    print("File opened.\nDetecting number of files.")
     line = f.readline()
     file_num = int(line.decode().strip())
     offset += len(line)
-    print(str(file_num),"file(s) detected.")
+    print(str(file_num),"file(s) detected.\nAcquiring file metadata.")
     file_list = []
     for i in range(file_num):
         line = f.readline()
@@ -29,9 +28,8 @@ with open(file_name, 'rb') as f:
         path, start, length = file_info
         file_object = {'name': path, 'start': int(start), 'end': int(length)}
         file_list.append(file_object)
-    print("All file metadata acquired.")
 
-print("Extracting file(s) to '", save_path, "' directory.")
+print("All file metadata acquired.\nExtracting file(s) to '", save_path, "' directory.")
 
 for file in file_list:
     file_path = os.path.join(save_path, file["name"])
