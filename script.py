@@ -19,7 +19,7 @@ for byte in bytes:
         break
 
 bytes = bytes[temp_index:]
-
+print(str(file_num),"file(s) detected.")
 temp_storage = ""
 temp_index = 0
 
@@ -68,9 +68,8 @@ next_start = file_list[0]["end"]
 
 for byte in bytes:
     index += 1
-    if index < next_start:
-        temp_storage.append(byte)
-    else:
+    temp_storage.append(byte)
+    if index >= next_start:
         temp_storage.append(byte)
         filename = "output/"+file_list[temp_index]["name"]
         os.makedirs(os.path.dirname(filename), exist_ok=True)
@@ -83,4 +82,4 @@ for byte in bytes:
             break
         next_start = next_start + file_list[temp_index]["end"]
 
-print("All file exported.")
+print("All file(s) exported.")
