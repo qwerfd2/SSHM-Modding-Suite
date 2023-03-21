@@ -64,7 +64,7 @@ bytes = bytes[deletes:]
 index = 0
 temp_index = 0
 temp_storage = []
-next_start = file_list[1]["start"]
+next_start = file_list[0]["end"]
 
 for byte in bytes:
     index += 1
@@ -79,8 +79,8 @@ for byte in bytes:
         newFile.write(fileByteArray)
         temp_index += 1
         temp_storage = []
-        if temp_index >= file_num - 1:
+        if temp_index >= file_num:
             break
-        next_start = file_list[temp_index+1]["start"]
+        next_start = next_start + file_list[temp_index]["end"]
 
 print("All file exported.")
