@@ -13,7 +13,6 @@ print("Detecting number of files.")
 file_num = 0
 temp_storage = ""
 temp_index = 0
-
 for byte in bytes:
     temp_index += 1
     temp_storage += chr(byte)
@@ -43,9 +42,9 @@ for byte in bytes:
         elif temp_index == 1:
             file_object["start"] = int(temp_storage)
             temp_storage = ""
-            temp_index += 1
+            temp_index += 1  
         else:
-            raise Exception('overflow temp_index, aborting.')       
+            raise Exception('file element overflow - more element than expected, aborting.')
     elif byte == 10:
         #/n
         file_object["end"] = int(temp_storage)
@@ -68,7 +67,6 @@ index = 0
 temp_index = 0
 temp_storage = []
 next_start = file_list[0]["end"]
-
 for byte in bytes:
     index += 1
     temp_storage.append(byte)
