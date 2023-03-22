@@ -52,7 +52,7 @@ def extract(file_name):
         print(file_name, "is deformed - is it a Secret Society Hidden Mystery .pak file? Traceback:\n", traceback.format_exc())
         quit()
     except:
-        print("An unknown error occurred at the step above. Please go to https://github.com/qwerfd2/SSHM-Pak-Extractor and let the developer know. Traceback:\n", traceback.format_exc())
+        print("An unknown error occurred at the step above. Please open an issue at https://github.com/qwerfd2/SSHM-Pak-Extractor. Traceback:\n", traceback.format_exc())
         quit()
 
 if file_name == 'all':
