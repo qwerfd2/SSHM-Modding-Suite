@@ -30,20 +30,9 @@ try:
             path, start, length = file_info
             file_object = {'name': path, 'start': int(start), 'length': int(length)}
             file_list.append(file_object)
-except FileNotFoundError as e:
-    print(file_name, "not found. Make sure it is in the same folder as the script itself.\n", traceback.format_exc())
-    quit()
-except ValueError as e:
-    print(file_name, "is deformed - is it a Secret Society Hidden Mystery .pak file?\n", traceback.format_exc())
-    quit()
-except:
-    print("Unknown error at the step above. Please open an issue at https://github.com/qwerfd2/SSHM-Pak-Extractor.\n", traceback.format_exc())
-    quit()
 
-print("File metadata acquired.\nExtracting file(s) to '", save_path, "' directory.")
+        print("All file metadata acquired.\nExtracting file(s) to '", save_path, "' directory.")
 
-try: 
-    with open(file_name, 'rb') as f:
         for file in file_list:
             file_path = os.path.join(save_path, file["name"])
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
@@ -51,8 +40,15 @@ try:
             content = f.read(file['length'])
             with open(file_path, 'wb') as out:
                 out.write(content)
-except:
-    print("Unknown error while extracting. Please open an issue at https://github.com/qwerfd2/SSHM-Pak-Extractor.\n", traceback.format_exc())
-    quit()
+        
+        print("All file(s) exported to '", save_path, "' directory.")
 
-print("All file(s) exported to '", save_path, "' directory.")
+except FileNotFoundError as e:
+    print(file_name, "not found. Make sure it is in the same folder as the script itself. Traceback:\n", traceback.format_exc())
+    quit()
+except ValueError as e:
+    print(file_name, "is deformed - is it a Secret Society Hidden Mystery .pak file? Traceback:\n", traceback.format_exc())
+    quit()
+except:
+    print("An unknown error occurred at the step above. Please go to https://github.com/qwerfd2/SSHM-Pak-Extractor and let the developer know. Traceback:\n", traceback.format_exc())
+    quit()
