@@ -2,8 +2,10 @@
 
 This script can extract .pak files for The Secret Society - Hidden Mystery.
 
-Usage: ```python script.py pack.pak output_dir```
+Extract every .pak file under the same directory: ```python script.py all output_dir```
 
-File will be saved to "output_dir" folder.
+Extract a single .pak file under the same directory: ```python script.py pack.pak output_dir```
 
-Dependencies: Python 3, obviously, but nothing else in particular. I could make a progress bar but... eh...
+Files will be extracted to "output_dir" folder.
+
+Dependencies: Python 3, obviously, but nothing else in particular.
