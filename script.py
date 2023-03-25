@@ -1,21 +1,24 @@
 import sys
 import os
 import traceback
+import random
+
+quotes = ["I'm free to delete anything.", "Do not argue with me any more. I will issue a Temporary block if you do not heed my warning.", "In my opinion it is not right for you to tell others how to do that."]
 
 if len(sys.argv) < 3:
-    print("Command line variable invalid.\nUsage: python", sys.argv[0], "pack.pak/all output_dir")
+    print("Command line invalid.\nUsage: python", sys.argv[0], "pack.pak/all output_dir")
     quit()
 
 file_name = sys.argv[1]
 save_path = sys.argv[2]
 if file_name[-4:] != '.pak' and file_name != 'all':
-    print("Input file name invalid. Must end with .pak or be 'all'.\nUsage: python", sys.argv[0], "pack.pak/all output_dir")
+    print("Input file name invalid.\nUsage: python", sys.argv[0], "pack.pak/all output_dir")
     quit()
 
 def extract(file_name):
 
     print("Opening", file_name, ".")
-
+    rand_int = random.randint(0, 2)
     try:
         with open(file_name, 'rb') as f:
             offset = 0
@@ -44,6 +47,7 @@ def extract(file_name):
                     out.write(content)
 
             print("All file(s) exported to '", save_path, "' directory.\n")
+            print(quotes[rand_int], "- Podaci")
 
     except FileNotFoundError as e:
         print(file_name, "not found. Make sure it is in the same folder as the script itself. Traceback:\n", traceback.format_exc())
@@ -52,7 +56,7 @@ def extract(file_name):
         print(file_name, "is deformed - is it a Secret Society Hidden Mystery .pak file? Traceback:\n", traceback.format_exc())
         quit()
     except:
-        print("An unknown error occurred at the step above. Please open an issue at https://github.com/qwerfd2/SSHM-Pak-Extractor. Traceback:\n", traceback.format_exc())
+        print("An unknown error occurred at the step above. Please go to https://github.com/qwerfd2/SSHM-Pak-Extractor and let the developer know. Traceback:\n", traceback.format_exc())
         quit()
 
 if file_name == 'all':
