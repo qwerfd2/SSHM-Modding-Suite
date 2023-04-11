@@ -53,4 +53,5 @@ for dirpath, _, filenames in os.walk(path_name):
             else:
                 progress_bar.update(1)
     
-    progress_bar.close()
+progress_bar.close()
+print("All valid images converted.")
