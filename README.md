@@ -4,7 +4,7 @@ These are two scripts that can extract/convert the content of .pak files for The
 
 ---
 
-script.py: Extract .pak file(s).
+extract.py: Extract .pak file(s).
 
  - Extract every .pak file under the same directory: ```python script.py all output_dir```
 
