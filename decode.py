@@ -36,13 +36,13 @@ def convert_jpg_to_png_with_mask(input_path, mask_path):
 
 path_name = sys.argv[1]      
 num_files = 0
-for dirpath, _, filenames in os.walk(directory):
+for dirpath, _, filenames in os.walk(path_name):
     for filename in filenames:
         if not filename.endswith("_.jpg") and filename.endswith(".jpg"):
             num_files += 1
 
 progress_bar = tqdm(total=num_files, desc="Converting images", unit="image")
-for dirpath, _, filenames in os.walk(directory):
+for dirpath, _, filenames in os.walk(path_name):
     for filename in filenames:
         if not filename.endswith("_.jpg") and filename.endswith(".jpg"):
             mask_file = os.path.join(dirpath, filename.replace(".jpg", "_.jpg"))
