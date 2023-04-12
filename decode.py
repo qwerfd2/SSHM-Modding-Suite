@@ -17,8 +17,7 @@ def convert_jpg_to_png_with_mask(input_path, mask_path):
             for y in range(img.height):
                 r, g, b, _ = img.getpixel((x, y))
                 alpha = mask.getpixel((x, y))
-                alpha /= 255
-                rgba = (r, g, b, int(alpha * 255))
+                rgba = (r, g, b, int(alpha))
                 rgba_image.putpixel((x, y), rgba)
 
     except:
