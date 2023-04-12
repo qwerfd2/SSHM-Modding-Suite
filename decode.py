@@ -10,14 +10,13 @@ if len(sys.argv) < 2:
 
 def convert_jpg_to_png_with_mask(input_path, mask_path):
     try:
-        img = Image.open(input_path).convert("RGBA")
+        img = Image.open(input_path).convert("RGB")
         mask = Image.open(mask_path).convert("L")
         rgba_image = Image.new("RGBA", img.size)
         for x in range(img.width):
             for y in range(img.height):
-                r, g, b, _ = img.getpixel((x, y))
-                alpha = mask.getpixel((x, y))
-                rgba = (r, g, b, int(alpha))
+                r, g, b = img.getpixel((x, y))
+                rgba = (r, g, b, mask.getpixel((x, y)))
                 rgba_image.putpixel((x, y), rgba)
 
     except:
