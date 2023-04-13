@@ -6,9 +6,9 @@ These are two scripts that can extract/convert the content of .pak files for The
 
 extract.py: Extract .pak file(s).
 
- - Extract every .pak file under the same directory: ```python script.py all output_dir```
+ - Extract every .pak file under the same directory: ```python extract.py all output_dir```
 
- - Extract a single .pak file under the same directory: ```python script.py pack.pak output_dir```
+ - Extract a single .pak file under the same directory: ```python extract.py pack.pak output_dir```
 
 Files will be extracted to "output_dir" folder.
 
