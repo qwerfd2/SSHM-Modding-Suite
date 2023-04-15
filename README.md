@@ -4,7 +4,7 @@ These are two scripts that can extract and convert the content of ```.pak``` fil
 
 ---
 
-extract.py: Extract ```.pak``` file(s).
+**extract.py**: Extract ```.pak``` file(s).
 
  - Extract every ```.pak``` file under the same directory: ```python extract.py all output_dir```
 
@@ -14,7 +14,7 @@ Files will be extracted to "output_dir" folder.
 
 ---
 
-decode.py: Convert ```.jpg``` and associated mask file to ```.png```.
+**decode.py**: Convert ```.jpg``` and associated mask file to ```.png```.
 
  - Convert all .jpg files under a directory: ```python decode.py input_dir```
  
@@ -22,7 +22,7 @@ decode.py: Convert ```.jpg``` and associated mask file to ```.png```.
 
 ---
 
-decrypt.py: Decrypt save file ```player.prf``` under the same directory.
+**decrypt.py**: Decrypt save file ```player.prf``` under the same directory.
 
 Make sure ```player.prf``` is within the same directory as the script, then call ```python decrypt.py```
 
