@@ -22,7 +22,7 @@ Files will be extracted to ```output_dir``` folder.
 
 ---
 
-**save.py**: Decrypt or encrypt save file ```player.prf``` under the same directory.
+**save.py**: Decrypt save file ```player.prf``` or encrypt ```plaintext.prf``` under the same directory.
 
 Decrypt ```player.prf```: ```python save.py d```, plaintext save will be saved to ```plaintext.prf```.
 
