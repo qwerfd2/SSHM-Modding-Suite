@@ -26,7 +26,7 @@ Files will be extracted to "output_dir" folder.
 
 Make sure ```player.prf``` is within the same directory as the script, then call ```python decrypt.py```
 
-plaintext file will be saved to ```edited.prf```. 
+plaintext file will be saved to ```plaintext.prf```. 
 
 Encrypt is currently unnecessary as the game reads plaintext just fine, but the script should work for encrypt after with minor modification.
 
