@@ -13,29 +13,30 @@ folder_path = os.path.dirname(os.path.abspath(__file__))
 save_file = "player.prf"
 file_path = os.path.join(folder_path, save_file)
 
-if os.path.exists(file_path) == False:
+if not os.path.exists(file_path):
     print("Error: 'player.prf' does not exist under the same directory.")
     quit()
 
-print("Extracting 'player.prf' to 'edited.prf'...")
+print("Extracting 'player.prf' to 'plaintext.prf'...")
+
+char_dict = {}
+for mapping in char_map:
+    char_dict[mapping["as"]] = mapping["bs"]
+    char_dict[mapping["bs"]] = mapping["as"]
 
 with open(save_file, "r") as input_file:
     text = input_file.read()
 
-for i, char in enumerate(text):
-    for mapping in char_map:
-        if char == mapping["as"]:
-            text = text[:i] + mapping["bs"] + text[i+1:]
-            break
-        if char == mapping["bs"]:
-            text = text[:i] + mapping["as"] + text[i+1:]
-            break
+new_text = ""
+for char in text:
+    new_char = char_dict.get(char, char)
+    new_text += new_char
 
-#removing this line for encrypt and it should work (havn't test it)
-text = text[1:-2]
+#remove this line to encrypt player.prf, it should work (havn't test it)
+new_text = new_text[1:-2]
 
-with open("edited.prf", "w") as output_file:
-    print("Extraction complete. Writing file...")
-    output_file.write(text)
+with open("plaintext.prf", "w") as output_file:
+    print("Decryption complete. Writing file...")
+    output_file.write(new_text)
 
-print("'edited.prf' saved to the same directory.")
+print("'plaintext.prf' saved to the same directory.")
