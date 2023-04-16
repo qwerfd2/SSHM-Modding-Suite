@@ -17,7 +17,7 @@ if not os.path.exists(file_path):
     print("Error: 'player.prf' does not exist under the same directory.")
     quit()
 
-print("Extracting 'player.prf' to 'plaintext.prf'...")
+print("Decrypting 'player.prf' to 'plaintext.prf'...")
 
 char_dict = {}
 for mapping in char_map:
