@@ -30,6 +30,8 @@ with open(save_file, "r") as input_file:
 new_text = ""
 for char in text:
     new_char = char_dict.get(char, char)
+    if new_char == char:
+        print("Warning: Undocumented character", char)
     new_text += new_char
 
 #remove this line to encrypt player.prf, it should work (havn't test it, as of 4/23 game can read plaintext prf)
