@@ -28,7 +28,7 @@ Make sure ```player.prf``` is within the same directory as the script, then call
 
 plaintext file will be saved to ```plaintext.prf```. 
 
-Encrypt is currently unnecessary as the game reads plaintext just fine, but the script should work for encrypt after with minor modification.
+Encrypt is currently unnecessary as the game accepts plaintext, but the script should work for encrypt after minor modification.
 
 ---
  
