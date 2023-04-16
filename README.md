@@ -30,7 +30,7 @@ plaintext file will be saved to ```plaintext.prf```.
 
 Encrypt is currently unnecessary as the game accepts plaintext, but the script can encrypt as well.
 
-The first byte and the last two bytse must be deleted for the game to recognize the plaintext savefile.
+The first byte and the last two bytes must be deleted for the game to recognize the plaintext savefile.
 
 ---
  
