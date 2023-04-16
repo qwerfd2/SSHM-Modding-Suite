@@ -31,7 +31,7 @@ new_text = ""
 for char in text:
     new_char = char_dict.get(char, char)
     if new_char == char:
-        print("Warning: Undocumented character", char)
+        print("Warning: Undocumented character", char, ", left as-is.")
     new_text += new_char
 
 with open("plaintext.prf", "w") as output_file:
