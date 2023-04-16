@@ -22,15 +22,13 @@ Files will be extracted to ```output_dir``` folder.
 
 ---
 
-**decrypt.py**: Decrypt save file ```player.prf``` under the same directory.
+**save.py**: Decrypt or encrypt save file ```player.prf``` under the same directory.
 
-Make sure ```player.prf``` is within the same directory as the script, then call ```python decrypt.py```
+Decrypt ```player.prf```: ```python save.py d```, plaintext save will be saved to ```plaintext.prf```.
 
-plaintext file will be saved to ```plaintext.prf```. 
+Encrypt ```plaintext.prf```: ```python save.py e```, encrypted save will be saved to ```player.prf```.
 
-Encrypt is currently unnecessary as the game accepts plaintext, but the script can encrypt as well.
-
-The first byte and the last two bytes must be deleted for the game to recognize the plaintext savefile.
+Encrypt is currently unnecessary as the game accepts plaintext. The first byte and the last two bytes must be deleted for the game to recognize the plaintext savefile.
 
 ---
  
