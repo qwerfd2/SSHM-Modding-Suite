@@ -10,13 +10,13 @@ These are two scripts that can extract and convert the content of ```.pak``` fil
 
  - Extract a single ```.pak``` file under the same directory: ```python extract.py pack.pak output_dir```
 
-Files will be extracted to "output_dir" folder.
+Files will be extracted to ```output_dir``` folder.
 
 ---
 
 **decode.py**: Convert ```.jpg``` and associated mask file to ```.png```.
 
- - Convert all .jpg files under a directory: ```python decode.py input_dir```
+ - Convert all ```.jpg``` files under a directory: ```python decode.py input_dir```
  
 ```.jpg``` files will be removed once the converted ```.png``` is saved. Might take a long time due to the pixel-by-pixel conversion.
 
