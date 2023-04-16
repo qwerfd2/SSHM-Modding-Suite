@@ -31,6 +31,7 @@ for i, char in enumerate(text):
             text = text[:i] + mapping["as"] + text[i+1:]
             break
 
+#removing this line for encrypt and it should work (havn't test it)
 text = text[1:-2]
 
 with open("edited.prf", "w") as output_file:
