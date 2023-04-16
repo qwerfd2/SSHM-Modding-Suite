@@ -34,8 +34,8 @@ for char in text:
         print("Warning: Undocumented character", char, ", left as-is.")
     new_text += new_char
 
+print("Decryption complete. Writing file...")
 with open("plaintext.prf", "w") as output_file:
-    print("Decryption complete. Writing file...")
     output_file.write(new_text)
 
 print("'plaintext.prf' saved to the same directory.")
