@@ -34,9 +34,6 @@ for char in text:
         print("Warning: Undocumented character", char)
     new_text += new_char
 
-#remove this line to encrypt player.prf, it should work (havn't test it, as of 4/23 game can read plaintext prf)
-new_text = new_text[1:-2]
-
 with open("plaintext.prf", "w") as output_file:
     print("Decryption complete. Writing file...")
     output_file.write(new_text)
