@@ -38,4 +38,4 @@ Dependencies:
  
  - decode.py: ```python 3``` ```pillow``` ```tqdm```
  
- - decrypt.py: ```python 3```
+ - save.py: ```python 3```
